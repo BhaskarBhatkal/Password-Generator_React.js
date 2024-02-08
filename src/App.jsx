@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import "./App.css";
 
 function App() {
   const [length, setLength] = useState(8);
@@ -10,10 +11,13 @@ function App() {
   const passwordGenerator = useCallback(() => {
     let pwd = "";
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    // str concat with numbers
     if (numAllowed) str += "0123456789";
+    // str concat with characters
     if (charAllowed) str += "!@#$%^&*?+=-^~";
     for (let i = 1; i <= length; i++) {
-      let charIndex = Math.floor(Math.random() * str.length + 1); //we'll get character here
+      //we'll get character index
+      let charIndex = Math.floor(Math.random() * str.length + 1);
       pwd += str.charAt(charIndex);
     }
     setPassword(pwd);
@@ -35,9 +39,11 @@ function App() {
      bg-gray-800"
     >
       <strong>
-        <h1 className="text-white text-center pb-2 mb-2 mt-1">
-          Password Generator
-        </h1>
+        <u>
+          <h1 className="text-white text-center pb-2 mb-2 mt-1">
+            Password Generator
+          </h1>
+        </u>
       </strong>
 
       <div className="flex shadow rounded-lg overflow-hidden mb-4">
@@ -75,7 +81,6 @@ function App() {
           <input
             type="checkbox"
             defaultChecked={numAllowed}
-            id="numInput"
             onChange={() => {
               setNumAllowed((prev) => !prev);
             }}
@@ -86,7 +91,6 @@ function App() {
           <input
             type="checkbox"
             defaultChecked={charAllowed}
-            id="charInput"
             onChange={() => {
               setCharAllowed((prev) => !prev);
             }}

@@ -7,7 +7,6 @@ function App() {
   const [charAllowed, setCharAllowed] = useState(false);
   const [password, setPassword] = useState("");
   const passwordRef = useRef(null);
-
   const passwordGenerator = useCallback(() => {
     let pwd = "";
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";

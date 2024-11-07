@@ -2,11 +2,12 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import "./App.css";
 
 function App() {
-  const [length, setLength] = useState(8);
+  const [length, setLength] = useState(15);
   const [numAllowed, setNumAllowed] = useState(false);
   const [charAllowed, setCharAllowed] = useState(false);
   const [password, setPassword] = useState("");
   const passwordRef = useRef(null);
+
   const passwordGenerator = useCallback(() => {
     let pwd = "";
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -29,7 +30,7 @@ function App() {
 
   useEffect(() => {
     passwordGenerator();
-  }, [length, numAllowed, charAllowed, passwordGenerator]);
+  }, [length, numAllowed, charAllowed]);
 
   return (
     <div
@@ -39,7 +40,7 @@ function App() {
     >
       <strong>
         <u>
-          <h1 className="text-white text-center pb-2 mb-2 mt-1">
+          <h1 className="text-[#dfdffd] text-center pb-2 mb-2 mt-1 text-[20px]">
             Password Generator
           </h1>
         </u>
@@ -49,14 +50,14 @@ function App() {
         <input
           type="text"
           value={password}
-          className="outline-none w-full py-1 px-3 rounded-lg "
+          className="outline-none w-full py-1.5 px-3 rounded-l-lg text-[16px] "
           placeholder="password"
           readOnly
           ref={passwordRef}
         />
         <button
           type="button"
-          className="bg-blue-600 text-white px-3 shrink-0 outline-none rounded-md"
+          className="bg-blue-600 text-white px-3 shrink-0 outline-none rounded-r-lg"
           onClick={copyPwdToClipboard}
         >
           copy
@@ -66,7 +67,7 @@ function App() {
         <div className="flex items-center-gap-x-1">
           <input
             type="range"
-            min={5}
+            min={15}
             max={50}
             value={length}
             className="cursor-pointer"
